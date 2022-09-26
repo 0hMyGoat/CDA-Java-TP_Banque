@@ -76,15 +76,11 @@ public class Client {
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
-        }
-        if (obj == this) {
+        } else if (obj.getClass() != this.getClass()) {
+            return false;
+        } else {
             return true;
         }
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
-        Client client = (Client) obj;
-        return (this.nom == client.nom && this.prenom == client.prenom && this.age == client.age && this.numero == client.numero && this.comptes == client.comptes);
     }
 
     public String toString() {

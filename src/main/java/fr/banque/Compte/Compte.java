@@ -46,15 +46,11 @@ public class Compte {
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
-        }
-        if (obj == this) {
+        } else if (obj.getClass() != this.getClass()) {
+            return false;
+        } else {
             return true;
         }
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
-        Compte compte = (Compte) obj;
-        return (this.numero == compte.numero && this.solde == compte.solde);
     }
     
 }
