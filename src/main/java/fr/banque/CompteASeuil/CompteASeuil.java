@@ -23,6 +23,10 @@ public class CompteASeuil extends Compte {
         this.seuil = seuil;
     }
 
+    /**
+     * Retire un montant du solde du compte dans la limite du seuil
+     */
+    @Override
     public void retirer(double unMontant) {
         if (this.getSolde() - unMontant >= this.getSeuil()) {
             super.retirer(unMontant);

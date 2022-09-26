@@ -31,18 +31,28 @@ public class Compte {
         this.solde = solde;
     }
 
+    /**
+     * Ajoute un montant au solde du compte
+     * @param unMontant thunasse à ajouter
+     */
     public void ajouter(double unMontant) {
         this.solde += unMontant;
     }
 
+    /**
+     * Retire un montant du solde du compte
+     * @param unMontant Thunasse à retirer
+     */
     public void retirer(double unMontant) {
         this.setSolde(solde -= unMontant);
     }
 
+    @Override
     public String toString() {
         return "Compte [numero=" + numero + ", solde=" + solde + "]";
     }
-
+    
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

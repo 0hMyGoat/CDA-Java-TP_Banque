@@ -69,10 +69,15 @@ public class Client {
         this.comptes = new ArrayList<Compte>(Arrays.asList(comptes));
     }
 
+    /**
+     * Ajoute un compte à la liste des comptes du client
+     * @param unCompte Compte à ajouter
+     */
     public void ajouterCompte(Compte unCompte) {
         this.comptes.add(unCompte);
     }
     
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -83,6 +88,7 @@ public class Client {
         }
     }
 
+    @Override
     public String toString() {
         return "Client [nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", numero=" + numero + ", comptes=" + comptes + "]";
     }

@@ -23,14 +23,22 @@ public class CompteRemunere extends Compte {
         this.taux = taux;
     }
 
+    /**
+     * Ajoute les intérêts au solde du compte
+     * @return le solde avec intérêts
+     */
     public double calculerInterets() {
         return this.getSolde() * this.getTaux();
     }
 
+    /**
+     * Ajoute les intérêts au solde du compte
+     */
     public void verserInterets() {
         this.ajouter(this.calculerInterets());
     }
 
+    @Override
     public String toString() {
         return "CompteRemunere [taux=" + this.getTaux() + ", numero=" + this.getNumero() + ", solde=" + this.getSolde() + "]";
     }
