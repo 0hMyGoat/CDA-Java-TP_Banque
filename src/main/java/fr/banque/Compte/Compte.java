@@ -2,8 +2,8 @@ package fr.banque.Compte;
 
 public class Compte {
 
-    int numero;
-    double solde;
+    private int numero;
+    private double solde;
 
     public Compte(){
         this.setNumero(0);
@@ -58,8 +58,10 @@ public class Compte {
             return false;
         } else if (obj.getClass() != this.getClass()) {
             return false;
-        } else {
+        } else if (((Compte) obj).getNumero() == this.getNumero()) {
             return true;
+        } else {
+            return false;
         }
     }
     

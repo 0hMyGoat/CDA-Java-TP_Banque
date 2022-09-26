@@ -83,8 +83,10 @@ public class Client {
             return false;
         } else if (obj.getClass() != this.getClass()) {
             return false;
-        } else {
+        } else if (this.getNumero() != ((Client) obj).getNumero()) {
             return true;
+        } else {
+            return false;
         }
     }
 
