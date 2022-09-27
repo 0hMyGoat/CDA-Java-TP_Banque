@@ -7,11 +7,11 @@ import java.util.Arrays;
 import fr.banque.Compte.Compte;
 
 public class Client {
-    private String nom;
-    private String prenom;
-    private int age;
-    private int numero;
-    private ArrayList<Compte> comptes;
+    protected String nom;
+    protected String prenom;
+    protected int age;
+    protected int numero;
+    protected ArrayList<Compte> comptes;
 
     public Client() {
         this.setNom("");
@@ -41,7 +41,7 @@ public class Client {
         return prenom;
     }
 
-    private void setPrenom(String prenom) {
+    protected void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
@@ -49,7 +49,7 @@ public class Client {
         return age;
     }
 
-    private void setAge(int age) {
+    protected void setAge(int age) {
         this.age = age;
     }
 
@@ -57,7 +57,7 @@ public class Client {
         return numero;
     }
 
-    private void setNumero(int numero) {
+    protected void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -65,7 +65,7 @@ public class Client {
         return comptes;
     }
 
-    private void setComptes(Compte ...comptes) {
+    protected void setComptes(Compte ...comptes) {
         this.comptes = new ArrayList<Compte>(Arrays.asList(comptes));
     }
 

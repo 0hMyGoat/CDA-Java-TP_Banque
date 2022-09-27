@@ -1,10 +1,11 @@
 package fr.banque.CompteASeuilRemunere;
 
+import fr.banque.BanqueException.BanqueException;
 import fr.banque.CompteLimitable.CompteLimitable;
 import fr.banque.CompteRemunere.CompteRemunere;
 
 public class CompteASeuilRemunere extends CompteRemunere implements CompteLimitable  {
-    private double seuil;
+    protected double seuil;
 
     public CompteASeuilRemunere() {
         super();
@@ -20,15 +21,25 @@ public class CompteASeuilRemunere extends CompteRemunere implements CompteLimita
         return seuil;
     }
 
-    private void setSeuil(double seuil) {
+    protected void setSeuil(double seuil) {
         this.seuil = seuil;
     }
 
-    public void retirer(double unMontant) {
+    /**
+     * Retire un montant du solde du compte dans la limite du seuil
+     * @throws BanqueException
+     */
+    @Override
+    public void retirer(double unMontant) throws BanqueException {
         if (this.getSolde() - unMontant >= this.getSeuil()) {
             super.retirer(unMontant);
+        } else if (this.getSolde() - unMontant < this.getSeuil()) {
+            throw new BanqueException("Le montant à retirer est supérieur au solde");
+        } else if (unMontant < 0) {
+            throw new BanqueException("Le montant à retirer est négatif");
+        } else if (this.getSolde() - unMontant < 0) {
+            throw new BanqueException("Il ne reste pas assez de thunasse dans le compte");
         }
     }
-
 
 }

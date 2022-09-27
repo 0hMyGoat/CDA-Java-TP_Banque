@@ -1,5 +1,7 @@
 package fr.banque.Compte;
 
+import fr.banque.BanqueException.BanqueException;
+
 public class Compte {
 
     private int numero;
@@ -19,7 +21,7 @@ public class Compte {
         return numero;
     }
 
-    private void setNumero(int numero) {
+    protected void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -27,7 +29,7 @@ public class Compte {
         return solde;
     }
 
-    private void setSolde(double solde) {
+    protected void setSolde(double solde) {
         this.solde = solde;
     }
 
@@ -42,9 +44,14 @@ public class Compte {
     /**
      * Retire un montant du solde du compte
      * @param unMontant Thunasse à retirer
+     * @throws BanqueException
      */
-    public void retirer(double unMontant) {
-        this.setSolde(solde -= unMontant);
+    public void retirer(double unMontant) throws BanqueException {
+        if (this.getSolde() - unMontant >= 0) {
+            this.solde -= unMontant;
+        } else {
+            throw new BanqueException("Solde insuffisant");
+        }
     }
 
     @Override

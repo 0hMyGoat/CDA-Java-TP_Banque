@@ -1,3 +1,4 @@
+import fr.banque.BanqueException.BanqueException;
 import fr.banque.Client.Client;
 import fr.banque.Compte.Compte;
 import fr.banque.CompteASeuil.CompteASeuil;
@@ -16,10 +17,15 @@ public class Run {
         System.out.println(client1);
 
         client1.getComptes().forEach(compte -> {
-            if (compte instanceof CompteASeuil) {
-                ((CompteLimitable) compte).retirer(50);
-            } else if (compte instanceof CompteRemunere) {
+            if (compte instanceof CompteRemunerable) {
                 ((CompteRemunerable) compte).verserInterets();
+            }
+            if (compte instanceof CompteLimitable) {
+                try {
+                    ((CompteLimitable) compte).retirer(1000);
+                } catch (BanqueException error) {
+                    error.printStackTrace();
+                }
             }
         });
         System.out.println(client1);
