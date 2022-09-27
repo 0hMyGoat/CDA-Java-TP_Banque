@@ -1,8 +1,9 @@
 package fr.banque.CompteASeuil;
 
 import fr.banque.Compte.Compte;
+import fr.banque.CompteLimitable.CompteLimitable;
 
-public class CompteASeuil extends Compte {
+public class CompteASeuil extends Compte implements CompteLimitable {
     private double seuil;
 
     public CompteASeuil() {

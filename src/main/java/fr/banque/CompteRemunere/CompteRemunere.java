@@ -1,8 +1,9 @@
 package fr.banque.CompteRemunere;
 
 import fr.banque.Compte.Compte;
+import fr.banque.CompteRemunerable.CompteRemunerable;
 
-public class CompteRemunere extends Compte {
+public class CompteRemunere extends Compte  implements CompteRemunerable {
     private double taux;
 
     public CompteRemunere() {
@@ -19,7 +20,7 @@ public class CompteRemunere extends Compte {
         return taux;
     }
 
-    private void setTaux(double taux) {
+    public void setTaux(double taux) {
         this.taux = taux;
     }
 
