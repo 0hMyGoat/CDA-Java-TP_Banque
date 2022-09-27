@@ -75,6 +75,7 @@ public class Client {
      */
     public void ajouterCompte(Compte unCompte) {
         this.comptes.add(unCompte);
+        // Exercice 9 : Pas besoin de lever une exception car le tableau est dynamique
     }
     
     @Override
