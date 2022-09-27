@@ -2,7 +2,9 @@ package fr.banque.Client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Arrays;
+import java.util.Hashtable;
 
 import fr.banque.Compte.Compte;
 
@@ -11,14 +13,14 @@ public class Client {
     protected String prenom;
     protected int age;
     protected int numero;
-    protected ArrayList<Compte> comptes;
+    protected Map<Integer, Compte> comptes;
 
     public Client() {
         this.setNom("");
         this.setPrenom("");
         this.setAge(0);
         this.setNumero(0);
-        this.comptes = new ArrayList<Compte>();
+        this.comptes = new Hashtable<Integer, Compte>();
     }
 
     public Client(String nom, String prenom, int age, int numero, Compte ...comptes) {
@@ -62,11 +64,12 @@ public class Client {
     }
 
     public List<Compte> getComptes() {
-        return comptes;
+        return new ArrayList<Compte>(this.comptes.values());
     }
 
     protected void setComptes(Compte ...comptes) {
-        this.comptes = new ArrayList<Compte>(Arrays.asList(comptes));
+        this.comptes = new Hashtable<Integer, Compte>();
+        Arrays.asList(comptes).forEach(compte -> this.comptes.put(compte.getNumero(), compte));
     }
 
     /**
@@ -74,7 +77,7 @@ public class Client {
      * @param unCompte Compte à ajouter
      */
     public void ajouterCompte(Compte unCompte) {
-        this.comptes.add(unCompte);
+        this.comptes.put(unCompte.getNumero(), unCompte);
         // Exercice 9 : Pas besoin de lever une exception car le tableau est dynamique
     }
     
